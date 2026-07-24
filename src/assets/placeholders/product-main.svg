@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0e1011"/>
+  <path d="M0 760 1200 300V900H0Z" fill="#131618"/>
+  <rect x="72" y="72" width="1056" height="756" fill="none" stroke="#383d40" stroke-width="2"/>
+  <path d="M72 180H1128" stroke="#e00717" stroke-width="8"/>
+  <text x="96" y="144" fill="#f2f3f3" font-family="Arial, sans-serif" font-size="44" font-weight="700">TATAN FORCE</text>
+  <text x="96" y="790" fill="#7a8285" font-family="Arial, sans-serif" font-size="24">PRODUCT / MAIN IMAGE PLACEHOLDER</text>
+</svg>

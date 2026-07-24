@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0b0c0d"/>
+  <path d="M0 680 300 470 520 570 820 300 1200 590V900H0Z" fill="#171a1c"/>
+  <g stroke="#383d40" stroke-width="3">
+    <path d="M160 720V300H320V720M880 720V260H1040V720"/>
+    <path d="M120 720H1080M160 380H320M880 340H1040"/>
+  </g>
+  <path d="M72 180H1128" stroke="#e00717" stroke-width="8"/>
+  <text x="96" y="144" fill="#f2f3f3" font-family="Arial, sans-serif" font-size="44" font-weight="700">APPLICATION SCENE</text>
+  <text x="96" y="790" fill="#7a8285" font-family="Arial, sans-serif" font-size="24">TRAINING SPACE PLACEHOLDER</text>
+</svg>

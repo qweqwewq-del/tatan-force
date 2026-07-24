@@ -1,0 +1,38 @@
+
+> tatan-force-frontend@0.1.0 dev
+> vite --configLoader runner --host 127.0.0.1 --port 4173
+
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m239[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4173[22m/[39m
+[2m23:50:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/layouts/SiteLayout.tsx[22m
+[2m23:50:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/common/SiteFooter.tsx[22m
+[2m23:57:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/pages.css[22m
+[2m00:17:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/InquirySuccessPage.tsx, /src/pages/QuotePreviewPage.tsx, /src/pages/home/HomePage.tsx, /src/components/common/SiteFooter.tsx[22m
+[2m00:17:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/inquiry/InquiryContext.tsx, /src/pages/InquirySuccessPage.tsx[22m
+[2m00:17:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/inquiry/InquiryContext.tsx[22m Could not Fast Refresh ("useInquiry" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m00:17:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/pages/InquiryContactPage.tsx, /src/pages/QuotePreviewPage.tsx, /src/pages/InquiryPage.tsx, /src/components/common/SiteHeader.tsx, /src/components/product/InquiryAddButton.tsx[22m
+[2m00:21:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx[22m
+[2m00:21:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx[22m
+[2m00:22:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/home/HomePage.tsx[22m
+[2m00:22:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductListingPage.tsx[22m
+[2m00:22:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductDetailPage.tsx[22m
+[2m00:22:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/common/SiteFooter.tsx[22m
+[2m00:23:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/QuotePreviewPage.tsx[22m
+[2m00:23:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/InquirySuccessPage.tsx[22m
+[2m00:25:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/pages.css[22m
+[2m00:27:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AuthContext.tsx[22m
+[2m00:27:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/admin/AuthContext.tsx[22m Could not Fast Refresh (export removed)
+[2m00:27:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/features/admin/AdminRouteGuard.tsx, /src/pages/admin/AdminAccountPage.tsx, /src/app/layouts/AdminLayout.tsx, /src/pages/admin/AdminLoginPage.tsx, /src/pages/owner/OwnerAccessPage.tsx[22m
+[2m00:27:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AdminRouteGuard.tsx[22m
+[2m00:27:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/layouts/AdminLayout.tsx[22m
+[2m00:27:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminLoginPage.tsx[22m
+[2m00:27:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminAccountPage.tsx[22m
+[2m00:28:00[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/owner/OwnerAccessPage.tsx[22m
+[2m00:28:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductListingPage.tsx[22m
+[2m00:28:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/pages.css[22m
+[2m00:28:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AuthContext.tsx[22m
+[2m00:28:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/admin/AuthContext.tsx[22m Could not Fast Refresh (export removed)
+[2m00:28:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/features/admin/AdminRouteGuard.tsx, /src/app/layouts/AdminLayout.tsx, /src/pages/admin/AdminLoginPage.tsx, /src/pages/admin/AdminAccountPage.tsx, /src/pages/owner/OwnerAccessPage.tsx[22m
+[2m00:28:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AdminRouteGuard.tsx, /src/app/layouts/AdminLayout.tsx, /src/pages/admin/AdminLoginPage.tsx, /src/pages/admin/AdminAccountPage.tsx, /src/pages/owner/OwnerAccessPage.tsx[22m

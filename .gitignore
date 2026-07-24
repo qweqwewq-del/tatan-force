@@ -1,0 +1,12 @@
+node_modules
+.npm-cache
+dist
+coverage
+.vite
+*.local
+server/uploads
+server/dist
+*.tsbuildinfo
+.DS_Store
+
+.env

@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tatan_force
+      POSTGRES_USER: tatan_force
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - tatan_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tatan_force -d tatan_force"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4174
+      APP_ORIGIN: ${APP_ORIGIN}
+      DATABASE_URL: postgres://tatan_force:${POSTGRES_PASSWORD}@postgres:5432/tatan_force
+      SESSION_SECRET: ${SESSION_SECRET}
+      OWNER_USERNAME: ${OWNER_USERNAME}
+      OWNER_PASSWORD: ${OWNER_PASSWORD}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_INITIAL_PASSWORD: ${ADMIN_INITIAL_PASSWORD}
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      STORAGE_DRIVER: ${STORAGE_DRIVER:-local}
+      UPLOAD_DIR: /app/server/uploads
+      S3_ENDPOINT: ${S3_ENDPOINT:-}
+      S3_REGION: ${S3_REGION:-auto}
+      S3_BUCKET: ${S3_BUCKET:-}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+      S3_PUBLIC_BASE_URL: ${S3_PUBLIC_BASE_URL:-}
+    ports:
+      - "4174:4174"
+    volumes:
+      - tatan_uploads:/app/server/uploads
+
+volumes:
+  tatan_postgres:
+  tatan_uploads:

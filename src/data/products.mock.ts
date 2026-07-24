@@ -1,0 +1,148 @@
+import adjustableBenchRack from '../assets/products/adjustable-bench-rack.png'
+import competitionPlates from '../assets/products/competition-plates.png'
+import gripPlates from '../assets/products/grip-plates.png'
+import powerRackPlatform from '../assets/products/power-rack-platform.png'
+import sixBarStorage from '../assets/products/six-bar-storage.png'
+import type { Product } from '../models/product'
+
+export const products: Product[] = [
+  {
+    id: 'product-competition-plates',
+    slug: 'color-competition-plates',
+    sku: 'TF-CP-150',
+    name: '彩色竞技杠铃片',
+    brand: 'TATAN FORCE',
+    category: '杠铃片',
+    summary: '符合竞技训练色彩标准的高精度包胶杠铃片。',
+    description:
+      '面向举重训练、专业体能中心与商业健身房设计，采用低弹橡胶包覆和精密钢制中孔，控制重量误差与落地回弹。',
+    images: [competitionPlates],
+    material: '低弹橡胶、精密钢制中孔',
+    dimensions: '标准 450mm 直径',
+    weight: '5–25kg / 片',
+    specifications: [
+      { id: 'weight-range', label: '重量范围', value: '5 / 10 / 15 / 20 / 25', unit: 'kg' },
+      { id: 'diameter', label: '外径', value: '450', unit: 'mm' },
+      { id: 'hole', label: '中孔直径', value: '50.4', unit: 'mm' },
+      { id: 'tolerance', label: '重量误差', value: '±0.25', unit: '%' },
+    ],
+    features: ['竞技色彩识别', '低弹耐摔橡胶', '精密不锈钢中孔'],
+    useCases: ['专业举重训练区', '商业健身房自由重量区'],
+    price: 860000,
+    priceVisible: true,
+    leadTime: '现货或 7–15 天',
+    status: 'active',
+  },
+  {
+    id: 'product-grip-plates',
+    slug: 'tri-grip-rubber-plates',
+    sku: 'TF-GP-025',
+    name: '三孔包胶杠铃片',
+    brand: 'TATAN FORCE',
+    category: '杠铃片',
+    summary: '便于抓握和快速换片的商用包胶配重片。',
+    description:
+      '三孔人体工学抓握结构兼顾自由重量训练与器械配重使用，包胶表面降低噪音并保护训练地面。',
+    images: [gripPlates],
+    material: '铸铁内芯、耐磨橡胶包覆',
+    dimensions: '直径随重量规格变化',
+    weight: '1.25–25kg / 片',
+    specifications: [
+      { id: 'weight-range', label: '重量范围', value: '1.25–25', unit: 'kg' },
+      { id: 'hole', label: '中孔直径', value: '50.4', unit: 'mm' },
+      { id: 'grip', label: '抓握结构', value: '三孔人体工学' },
+      { id: 'finish', label: '表面处理', value: '耐磨包胶' },
+    ],
+    features: ['三孔快速抓握', '耐磨静音包胶', '清晰重量标识'],
+    useCases: ['商业健身房', '企业与家庭训练空间'],
+    price: 125000,
+    priceVisible: true,
+    leadTime: '现货或 7–15 天',
+    status: 'active',
+  },
+  {
+    id: 'product-six-bar-storage',
+    slug: 'six-bar-storage-rack',
+    sku: 'TF-SR-006',
+    name: '六杆位收纳架',
+    brand: 'TATAN FORCE',
+    category: '存储设备',
+    summary: '紧凑占地、稳定承托的六杆位奥杆收纳方案。',
+    description:
+      '采用加厚钢板底座与独立保护套筒，集中收纳六根标准奥林匹克杠铃杆，保持训练空间整洁安全。',
+    images: [sixBarStorage],
+    material: 'Q235 钢材、耐磨保护套',
+    dimensions: '520 × 430 × 260mm',
+    weight: '约 28kg',
+    specifications: [
+      { id: 'capacity', label: '收纳容量', value: '6', unit: '根' },
+      { id: 'bar-type', label: '适配杆型', value: '50mm 奥林匹克杠铃杆' },
+      { id: 'footprint', label: '占地尺寸', value: '520 × 430', unit: 'mm' },
+      { id: 'finish', label: '表面处理', value: '静电粉末喷涂' },
+    ],
+    features: ['六杆集中收纳', '加厚稳定底座', '套筒防刮保护'],
+    useCases: ['自由重量训练区', '专业训练工作室'],
+    price: 268000,
+    priceVisible: true,
+    leadTime: '10–20 天',
+    status: 'active',
+  },
+  {
+    id: 'product-adjustable-bench-rack',
+    slug: 'adjustable-safety-bench-rack',
+    sku: 'TF-BR-400',
+    name: '可调安全卧推架',
+    brand: 'TATAN FORCE',
+    category: '力量训练设备',
+    summary: '兼顾多档调节与安全保护的专业卧推训练设备。',
+    description:
+      '可调式挂钩和安全保护臂适应不同训练者与卧推角度，重型钢材结构满足商业场景高频使用。',
+    images: [adjustableBenchRack],
+    material: '75 × 75 × 3mm 高强度钢管',
+    dimensions: '1780 × 1650 × 1450mm',
+    weight: '约 118kg',
+    specifications: [
+      { id: 'steel', label: '主体钢管', value: '75 × 75 × 3', unit: 'mm' },
+      { id: 'capacity', label: '额定承重', value: '400', unit: 'kg' },
+      { id: 'positions', label: '调节档位', value: '8', unit: '档' },
+      { id: 'safety', label: '安全保护', value: '双侧可调保护臂' },
+    ],
+    features: ['多档高度调节', '双侧安全保护', '商业级重型结构'],
+    useCases: ['商业健身房卧推区', '专业力量训练中心'],
+    price: 1280000,
+    priceVisible: true,
+    leadTime: '20–30 天',
+    status: 'active',
+  },
+  {
+    id: 'product-power-rack-platform',
+    slug: 'power-rack-weightlifting-platform',
+    sku: 'TF-PR-P01',
+    name: '深蹲架与举重台',
+    brand: 'TATAN FORCE',
+    category: '训练架',
+    summary: '训练架、举重台与模块化附件组成的综合力量训练核心。',
+    description:
+      '面向专业力量训练和商业健身空间，将高承重深蹲架、减震举重平台及附件系统整合为可扩展训练单元。',
+    images: [powerRackPlatform],
+    material: '75 × 75 × 3mm 钢材、橡胶与实木平台',
+    dimensions: '3200 × 2400 × 2450mm',
+    weight: '约 420kg',
+    specifications: [
+      { id: 'steel', label: '立柱规格', value: '75 × 75 × 3', unit: 'mm' },
+      { id: 'capacity', label: '最大承重', value: '800+', unit: 'kg' },
+      { id: 'platform', label: '平台尺寸', value: '3000 × 2000', unit: 'mm' },
+      { id: 'mounting', label: '固定方式', value: '地面锚固 / 独立安装' },
+    ],
+    features: ['800kg+ 高承重', '模块化附件系统', '减震实木举重平台'],
+    useCases: ['专业运动队体能中心', '高端商业力量训练区'],
+    price: 3880000,
+    priceVisible: true,
+    leadTime: '30–45 天',
+    status: 'active',
+  },
+]
+
+export function getProductBySlug(slug: string) {
+  return products.find((product) => product.slug === slug)
+}

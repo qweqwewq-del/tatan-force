@@ -1,0 +1,46 @@
+
+> tatan-force-frontend@0.1.0 dev
+> vite --configLoader runner --host 127.0.0.1 --port 4173 --strictPort
+
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m244[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4173[22m/[39m
+[2m01:01:44[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m01:01:44[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+[2m01:01:44[22m [36m[1m[vite][22m[39m server restarted.
+[2m01:02:21[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:/Users/UserName/Documents/Codex/2026-07-23/tatan-force-figma-https-www-figma/server/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2m01:07:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AuthContext.tsx, /src/pages/admin/AdminAccountPage.tsx, /src/pages/owner/OwnerAccessPage.tsx, /src/features/admin/AdminRouteGuard.tsx, /src/app/layouts/AdminLayout.tsx, /src/pages/admin/AdminLoginPage.tsx[22m
+[2m01:07:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AuthContext.tsx[22m
+[2m01:07:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AdminRouteGuard.tsx[22m
+[2m01:07:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminLoginPage.tsx[22m
+[2m01:07:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminAccountPage.tsx[22m
+[2m01:07:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/layouts/AdminLayout.tsx[22m
+[2m01:08:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/admin/AdminRouteGuard.tsx[22m
+[2m01:08:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/inquiry/InquiryContext.tsx[22m
+[2m01:08:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/inquiry/InquiryContext.tsx[22m Could not Fast Refresh ("useInquiry" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m01:08:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/product/InquiryAddButton.tsx, /src/app/App.tsx, /src/pages/InquiryPage.tsx, /src/pages/QuotePreviewPage.tsx, /src/pages/InquiryContactPage.tsx, /src/components/common/SiteHeader.tsx[22m
+[2m01:08:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/QuotePreviewPage.tsx[22m
+[2m01:08:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/InquirySuccessPage.tsx[22m
+[2m01:09:00[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/common/SiteFooter.tsx[22m
+[2m01:09:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductListingPage.tsx[22m
+[2m01:09:02[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductDetailPage.tsx[22m
+[2m01:09:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/home/HomePage.tsx[22m
+[2m01:09:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminProductsPage.tsx[22m
+[2m01:09:47[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminInquiriesPage.tsx[22m
+[2m01:09:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminSettingsPage.tsx[22m
+[2m01:10:13[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/owner/OwnerAccessPage.tsx[22m
+[2m01:10:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/owner/OwnerAccessPage.tsx[22m
+[2m01:11:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/InquiryContactPage.tsx[22m
+[2m01:11:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/inquiry/InquiryContext.tsx[22m
+[2m01:11:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/inquiry/InquiryContext.tsx[22m Could not Fast Refresh ("useInquiry" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m01:11:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/product/InquiryAddButton.tsx, /src/app/App.tsx, /src/pages/InquiryPage.tsx, /src/pages/QuotePreviewPage.tsx, /src/pages/InquiryContactPage.tsx, /src/components/common/SiteHeader.tsx, /src/pages/InquirySuccessPage.tsx[22m
+[2m01:12:14[22m [36m[1m[vite][22m[39m [32m.env.local changed, restarting server...[39m
+[2m01:12:14[22m [36m[1m[vite][22m[39m server restarted.
+[2m01:13:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductListingPage.tsx, /src/pages/admin/AdminProductsPage.tsx, /src/pages/products/ProductDetailPage.tsx, /src/pages/home/HomePage.tsx[22m
+[2m01:13:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/QuotePreviewPage.tsx, /src/pages/admin/AdminSettingsPage.tsx, /src/pages/home/HomePage.tsx, /src/pages/InquirySuccessPage.tsx, /src/components/common/SiteFooter.tsx[22m
+[2m01:13:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/owner/OwnerAccessPage.tsx[22m
+[2m01:14:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/inquiry/InquiryContext.tsx[22m
+[2m01:14:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/features/inquiry/InquiryContext.tsx[22m Could not Fast Refresh ("useInquiry" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m01:14:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/pages/QuotePreviewPage.tsx, /src/pages/InquiryContactPage.tsx, /src/pages/InquiryPage.tsx, /src/pages/InquirySuccessPage.tsx, /src/components/product/InquiryAddButton.tsx, /src/components/common/SiteHeader.tsx[22m
+[2m01:14:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/products/ProductListingPage.tsx, /src/pages/admin/AdminProductsPage.tsx, /src/pages/products/ProductDetailPage.tsx, /src/pages/home/HomePage.tsx[22m

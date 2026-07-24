@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#070809"/>
+  <g fill="none" stroke="#383d40" stroke-width="2">
+    <rect x="72" y="72" width="1056" height="756"/>
+    <circle cx="600" cy="450" r="250"/>
+    <circle cx="600" cy="450" r="150"/>
+    <path d="M72 450H1128M600 72V828"/>
+  </g>
+  <path d="M72 180H1128" stroke="#e00717" stroke-width="8"/>
+  <text x="96" y="144" fill="#f2f3f3" font-family="Arial, sans-serif" font-size="44" font-weight="700">DETAIL / MATERIAL</text>
+  <text x="96" y="790" fill="#7a8285" font-family="Arial, sans-serif" font-size="24">INDUSTRIAL DETAIL PLACEHOLDER</text>
+</svg>

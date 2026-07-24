@@ -1,0 +1,87 @@
+[2m01:07:55[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/session[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:09:01[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:09:19[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:09:19[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:11:30[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/session[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/session[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:12:16[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:13:35[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:13:35[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:14:28[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:14:28[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:14:28[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:08[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:08[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:12[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:12[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:12[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/products[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m01:17:12[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/settings[39m
+Error: connect ECONNREFUSED 127.0.0.1:4174
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
