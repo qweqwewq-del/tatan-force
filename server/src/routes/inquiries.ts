@@ -1,6 +1,7 @@
 import { randomInt } from 'node:crypto'
 import { Router } from 'express'
 import type { PoolClient } from 'pg'
+import { z } from 'zod'
 import {
   inquiryCreateSchema,
   inquiryStatusSchema,
@@ -9,6 +10,7 @@ import {
   type ProductRow,
 } from '../domain.js'
 import { requireAuth } from '../middleware/auth.js'
+import { recordInquiryDeletion } from '../security/audit.js'
 import type { Database } from '../types.js'
 
 interface InquiryRow {
@@ -197,6 +199,31 @@ export function createInquiriesRouter(db: Database) {
           return
         }
         response.json({ id: request.params.id, status })
+      } catch (error) {
+        next(error)
+      }
+    },
+  )
+
+  router.delete(
+    '/admin/:id',
+    requireAuth(['OWNER']),
+    async (request, response, next) => {
+      try {
+        const inquiryId = z.string().min(1).max(120).parse(request.params.id)
+        const status = await db.transaction(async (client) => {
+          const result = await client.query(
+            'DELETE FROM inquiries WHERE id = $1 RETURNING id',
+            [inquiryId],
+          )
+          if (!result.rowCount) return 404
+          await recordInquiryDeletion(client, {
+            actor: request.session.user!,
+            inquiryId,
+          })
+          return 204
+        })
+        response.status(status).end()
       } catch (error) {
         next(error)
       }

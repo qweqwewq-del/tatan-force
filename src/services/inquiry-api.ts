@@ -34,3 +34,9 @@ export async function changeInquiryStatus(
     body: JSON.stringify({ status }),
   })
 }
+
+export function deleteOwnerInquiry(id: string): Promise<void> {
+  return apiRequest(`/inquiries/admin/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+  })
+}

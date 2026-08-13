@@ -31,12 +31,12 @@
     "blockedIssues":  [
 
                       ],
-    "currentTask":  "Publish corrected hero composition and restore supplied promotion image text",
+    "currentTask":  "Recover administrator credentials and add owner order controls with password-change audit",
     "nextSuggestedPhase":  "deployment-verification",
     "allowAutoContinue":  false,
     "visualScoreThreshold":  90,
     "functionalTestsPassed":  true,
     "securityReviewPassed":  true,
     "deploymentStatus":  "ready-to-push",
-    "lastUpdatedAt":  "2026-08-13T14:05:00Z"
+    "lastUpdatedAt":  "2026-08-13T14:56:00Z"
 }

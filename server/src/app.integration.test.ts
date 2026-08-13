@@ -25,6 +25,54 @@ memory.public.none(`
     created_at timestamptz NOT NULL DEFAULT now(),
     updated_at timestamptz NOT NULL DEFAULT now()
   );
+  CREATE TABLE credential_reset_tokens (
+    token_digest text PRIMARY KEY,
+    used_at timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE TABLE user_sessions (
+    sid varchar PRIMARY KEY,
+    sess json NOT NULL,
+    expire timestamp NOT NULL
+  );
+  CREATE TABLE security_audit_events (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type text NOT NULL,
+    actor_user_id uuid,
+    actor_username text NOT NULL,
+    actor_role text NOT NULL,
+    target_user_id uuid,
+    target_username text,
+    target_role text,
+    subject_id text,
+    occurred_at timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE TABLE inquiries (
+    id text PRIMARY KEY,
+    customer_name text NOT NULL,
+    customer_phone text NOT NULL,
+    customer_wechat text,
+    customer_company text,
+    customer_address text,
+    customer_email text,
+    customer_note text,
+    status text NOT NULL DEFAULT 'pending',
+    internal_note text,
+    submitted_at timestamptz NOT NULL DEFAULT now(),
+    updated_at timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE TABLE inquiry_items (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    inquiry_id text NOT NULL REFERENCES inquiries(id) ON DELETE CASCADE,
+    product_id text,
+    slug text NOT NULL,
+    sku text NOT NULL,
+    product_name text NOT NULL,
+    image_url text NOT NULL,
+    specification text,
+    quantity integer NOT NULL,
+    unit_price bigint NOT NULL,
+    note text
+  );
   CREATE TABLE site_settings (
     id integer PRIMARY KEY,
     brand_name text NOT NULL,
@@ -174,6 +222,103 @@ describe('production API security boundary', () => {
         role: 'ADMIN',
       })
       .expect(403)
+  })
+
+  it('lets only the owner reset admin credentials and review password-change events', async () => {
+    const owner = request.agent(app)
+    await owner
+      .post('/api/auth/login')
+      .set('Origin', 'http://localhost')
+      .send({
+        username: 'tatan_master',
+        password: 'ValidationOwner!2026',
+        role: 'OWNER',
+      })
+      .expect(200)
+    const users = await owner.get('/api/owner/users').expect(200)
+    const adminId = users.body.users[0].id as string
+
+    await owner
+      .put(`/api/owner/users/${adminId}/password`)
+      .set('Origin', 'http://localhost')
+      .send({ password: 'ResetAdmin!2026' })
+      .expect(204)
+
+    await request(app)
+      .post('/api/auth/login')
+      .set('Origin', 'http://localhost')
+      .send({
+        username: 'tatan_admin',
+        password: 'ResetAdmin!2026',
+        role: 'ADMIN',
+      })
+      .expect(200)
+
+    await owner
+      .put(`/api/owner/users/${adminId}/password`)
+      .set('Origin', 'http://localhost')
+      .send({ password: 'ValidationAdmin!2026' })
+      .then((response) => {
+        if (response.status !== 204) throw new Error(JSON.stringify(response.body))
+      })
+
+    const events = await owner.get('/api/owner/password-events').expect(200)
+    expect(events.body.events).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        actorUsername: 'tatan_master',
+        source: 'OWNER_RESET',
+        targetUsername: 'tatan_admin',
+      }),
+    ]))
+    expect(events.body.events[0]).not.toHaveProperty('password')
+
+    const admin = await loginAdmin()
+    await admin.get('/api/owner/password-events').expect(403)
+  })
+
+  it('denies administrators and permits the owner to permanently delete an order', async () => {
+    const owner = request.agent(app)
+    await owner
+      .post('/api/auth/login')
+      .set('Origin', 'http://localhost')
+      .send({
+        username: 'tatan_master',
+        password: 'ValidationOwner!2026',
+        role: 'OWNER',
+      })
+      .expect(200)
+
+    const original = await db.query(
+      `INSERT INTO inquiries (id, customer_name, customer_phone, status)
+       VALUES ('TFI-DELETE-001', 'Delete Test', '13000000000', 'pending')
+       RETURNING id`,
+    )
+    expect(original.rowCount).toBe(1)
+
+    const admin = await loginAdmin()
+    await admin
+      .delete('/api/inquiries/admin/TFI-DELETE-001')
+      .set('Origin', 'http://localhost')
+      .expect(403)
+
+    await owner
+      .delete('/api/inquiries/admin/TFI-DELETE-001')
+      .set('Origin', 'http://localhost')
+      .then((response) => {
+        if (response.status !== 204) throw new Error(JSON.stringify(response.body))
+      })
+
+    await owner
+      .delete('/api/inquiries/admin/TFI-DELETE-001')
+      .set('Origin', 'http://localhost')
+      .expect(404)
+
+    const events = await db.query<{ subject_id: string; event_type: string }>(
+      "SELECT subject_id, event_type FROM security_audit_events WHERE subject_id = 'TFI-DELETE-001'",
+    )
+    expect(events.rows).toEqual([
+      { event_type: 'INQUIRY_DELETED', subject_id: 'TFI-DELETE-001' },
+    ])
   })
 
   it('accepts signed image content from an authenticated administrator', async () => {

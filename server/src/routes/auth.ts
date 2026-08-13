@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { z } from 'zod'
 import type { Database } from '../types.js'
 import { hashPassword, verifyPassword } from '../security/password.js'
+import { recordPasswordChange } from '../security/audit.js'
 import { requireAuth } from '../middleware/auth.js'
 import { roleSchema } from '../domain.js'
 
@@ -105,10 +106,17 @@ export function createAuthRouter(db: Database) {
           return
         }
         const passwordHash = await hashPassword(input.nextPassword)
-        await db.query(
-          'UPDATE users SET password_hash = $1, updated_at = now() WHERE id = $2',
-          [passwordHash, userId],
-        )
+        await db.transaction(async (client) => {
+          await client.query(
+            'UPDATE users SET password_hash = $1, updated_at = now() WHERE id = $2',
+            [passwordHash, userId],
+          )
+          await recordPasswordChange(client, {
+            actor: request.session.user!,
+            source: 'SELF_SERVICE',
+            target: user,
+          })
+        })
         response.status(204).end()
       } catch (error) {
         next(error)

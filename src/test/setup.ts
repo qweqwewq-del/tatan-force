@@ -87,6 +87,9 @@ beforeEach(() => {
       updateInquiryStatus(id, body.status)
       return json({ id, status: body.status })
     }
+    if (url.pathname.startsWith('/api/inquiries/admin/') && method === 'DELETE') {
+      return new Response(null, { status: 204 })
+    }
     if (url.pathname === '/api/inquiries' && method === 'POST') {
       const product = products.find((item) => item.id === body.items[0]?.productId)!
       return json({
@@ -117,6 +120,9 @@ beforeEach(() => {
     }
     if (url.pathname === '/api/owner/users') {
       return json({ users: [{ id: 'admin-1', username: 'tatan_admin', role: 'ADMIN', createdAt: '2026-07-24T00:00:00.000Z' }] })
+    }
+    if (url.pathname === '/api/owner/password-events') {
+      return json({ events: [] })
     }
 
     return json({ error: 'NOT_FOUND' }, 404)

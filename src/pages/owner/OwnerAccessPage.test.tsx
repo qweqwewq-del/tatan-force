@@ -28,5 +28,6 @@ describe('OwnerAccessPage', () => {
 
     expect(await screen.findByText('系统维护控制台')).toBeInTheDocument()
     expect(screen.getByText('商家管理员账号')).toBeInTheDocument()
+    expect(screen.getByText('管理员密码变更记录')).toBeInTheDocument()
   })
 })

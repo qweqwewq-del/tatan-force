@@ -15,6 +15,7 @@ const schema = z.object({
   OWNER_PASSWORD: z.string().min(12).default('OwnerLocal!2026'),
   ADMIN_USERNAME: z.string().min(3).default('tatan_admin'),
   ADMIN_INITIAL_PASSWORD: z.string().min(12).default('TatanAdmin!2026'),
+  CREDENTIAL_RESET_TOKEN: z.string().min(16).max(1_000).optional(),
   COOKIE_SECURE: booleanString,
   STORAGE_DRIVER: z.enum(['local', 's3']).default('local'),
   UPLOAD_DIR: z.string().default('server/uploads'),

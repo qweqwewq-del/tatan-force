@@ -1,24 +1,17 @@
 import { loadConfig } from '../config.js'
 import { createDatabase } from '../db.js'
-import { hashPassword } from '../security/password.js'
+import {
+  applyOneTimeCredentialReset,
+  ensureBootstrapAccounts,
+} from '../bootstrap-credentials.js'
 import { seedProducts } from '../seed-products.js'
 
 const config = loadConfig()
 const db = createDatabase(config)
 
 try {
-  for (const account of [
-    { username: config.OWNER_USERNAME, password: config.OWNER_PASSWORD, role: 'OWNER' },
-    { username: config.ADMIN_USERNAME, password: config.ADMIN_INITIAL_PASSWORD, role: 'ADMIN' },
-  ] as const) {
-    const passwordHash = await hashPassword(account.password)
-    await db.query(
-      `INSERT INTO users (username, password_hash, role)
-       VALUES ($1,$2,$3)
-       ON CONFLICT (username) DO NOTHING`,
-      [account.username, passwordHash, account.role],
-    )
-  }
+  await ensureBootstrapAccounts(db, config)
+  const credentialsReset = await applyOneTimeCredentialReset(db, config)
 
   for (const product of seedProducts) {
     await db.transaction(async (client) => {
@@ -45,7 +38,11 @@ try {
       }
     })
   }
-  console.info(`Seeded ${seedProducts.length} products and two administrator accounts.`)
+  console.info(
+    `Seeded ${seedProducts.length} products and two administrator accounts.${
+      credentialsReset ? ' Applied one-time credential reset.' : ''
+    }`,
+  )
 } finally {
   await db.close()
 }

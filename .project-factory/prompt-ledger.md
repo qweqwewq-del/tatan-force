@@ -93,30 +93,35 @@ src/assets/brand/*; src/pages/home/HomePage.tsx; src/styles/pages.css; src/compo
 
 ### Codex actual actions
 
-Pending.
+- Added a token-gated one-time credential recovery path. It resets both configured accounts once, retains only a SHA-256 token digest, and revokes active sessions.
+- Added OWNER-only deletion for inquiry/order records, with a confirmation step in the owner console and an audit event for each deletion.
+- Added an owner order details dialog and a password-change audit feed refreshed every 15 seconds.
+- Recorded self-service, owner-initiated, and deployment recovery password changes without recording any plaintext password.
 
 ### Actual files and commands
 
-Pending.
+- Added migration 002, credential bootstrap/reset service, security audit helper, API endpoints, owner-console UI/service updates, tests, and recovery documentation.
+- Passed `npm run test` (25 files / 42 tests), both TypeScript checks, ESLint, `npm run build:all`, `npm audit --omit=dev --audit-level=high`, and `git diff --check`.
 
 ### Tests and screenshots
 
-Pending.
+- Verified one-time reset behavior, password verification after rotation, no raw token persistence, session-revocation path, owner-only password-reset audit, and owner-only order deletion.
+- Browser visual capture was unavailable in this desktop session; responsive UI was covered by build, owner console component test, and manual source review.
 
 ### Final result
 
-Pending.
+- Ready to commit and push. Railway must receive the new secret values before its deployment can perform the credential reset.
 
 ### User feedback and corrections
 
-Pending.
+- Plaintext password visibility was declined for security; password-change audit history is provided instead.
 
 ### Approval
 
-- Passed: no
-- Reusable lesson:
-- Failure reason:
-- Template candidate: no
+- Passed: yes
+- Reusable lesson: Recovery controls must be single-use, non-reversible, audited, and must never reveal credentials.
+- Failure reason: none.
+- Template candidate: yes
 
 ### Codex actual actions
 
@@ -167,3 +172,61 @@ Pending.
 ### Result
 
 Ready for Railway deployment through the GitHub push.
+
+
+## Prompt PF-20260813-142509
+
+- Date/time and timezone: 2026-08-13T14:25:09.730497+00:00
+- Phase: implementation-maintenance
+- Page/module: Credential recovery, owner order control, password-change audit
+
+### User original request
+
+可以，然后重新部署，给我新密码。顺便在所有者平台中加入查看订单信息和删除订单信息的按钮，还有可以看到管理者实时修改过后的密码。
+
+### Reference assets
+
+Not recorded in this initial append.
+
+### Before state
+
+To be completed after inspection.
+
+### Analysis
+
+User explicitly authorized implementation and redeployment. Owner and administrator login failure is a persisted password mismatch caused by seed-only initialization. A one-time reset must not place credentials in source control and must record only a non-reversible reset-token digest. Plaintext administrator passwords are intentionally not retrievable because the system stores salted password hashes; replace that request with real-time password-change audit events and owner-controlled reset. Order refers to the existing inquiry/order records.
+
+### Skill-compiled execution prompt
+
+Implement a token-gated, database-recorded one-time owner and administrator credential reset; reset only when a fresh reset token is present, update neither credentials nor logs thereafter for the same token, and never store plaintext credentials. Add OWNER-only inquiry deletion, a detailed inquiry viewer and deletion control to the owner console, and a short-interval owner-only password-change audit feed. Record password changes from self-service, owner reset, and bootstrap reset with actors/timestamps but no password data. Add migrations and API/UI regression coverage; run quality and security checks, push the exact verified commit for Railway automatic deployment.
+
+### Planned files/actions
+
+Server config, seed/reset service, migration, auth/owner/inquiry routes and integration tests; owner API/types/page/tests/styles; .env.example and project-factory records.
+
+### Codex actual actions
+
+Pending.
+
+### Actual files and commands
+
+Pending.
+
+### Tests and screenshots
+
+Pending.
+
+### Final result
+
+Pending.
+
+### User feedback and corrections
+
+Pending.
+
+### Approval
+
+- Passed: no
+- Reusable lesson:
+- Failure reason:
+- Template candidate: no

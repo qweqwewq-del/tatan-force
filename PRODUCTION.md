@@ -29,6 +29,16 @@ npm run dev:all
 
 前端为 `http://127.0.0.1:5173`，API 为 `http://127.0.0.1:4174`。Vite 将 `/api` 与 `/uploads` 代理到 API。
 
+## One-time credential recovery
+
+When the Railway password variables no longer match the credentials stored in
+PostgreSQL, set new `OWNER_PASSWORD` and `ADMIN_INITIAL_PASSWORD` values plus
+a fresh `CREDENTIAL_RESET_TOKEN` of at least 16 characters, then deploy once.
+Only a SHA-256 digest of the token is stored; the same token cannot reset the
+accounts a second time. The reset revokes existing sessions. Remove the token
+from Railway after a successful deployment. The owner console provides a
+password-change audit trail, never a readable password.
+
 ## API
 
 - `GET /api/products`

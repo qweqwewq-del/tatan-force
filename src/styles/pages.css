@@ -2189,6 +2189,21 @@
   font-size: 1.1rem;
 }
 
+.owner-panel__note {
+  color: var(--color-text-secondary);
+  font-size: 0.7rem;
+}
+
+.owner-order-actions {
+  display: grid;
+  gap: 0.45rem;
+  justify-items: start;
+}
+
+.table-link--danger {
+  color: var(--color-status-error);
+}
+
 .owner-admin-row {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
