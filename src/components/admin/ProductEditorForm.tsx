@@ -1,19 +1,20 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { centToYuan, yuanToCent } from '../../features/inquiry/money'
 import type { Product, SpecItem } from '../../models/product'
+import { uploadImage } from '../../services/upload-api'
 import { IndustrialButton } from '../common/IndustrialButton'
 
 interface ProductEditorFormProps {
   product: Product | null
   onCancel: () => void
-  onSave: (product: Product) => void
+  onSave: (product: Product) => Promise<void> | void
 }
 
 function slugify(value: string) {
   const normalized = value
     .trim()
     .toLowerCase()
-    .replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-')
+    .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
   return normalized || `product-${Date.now()}`
 }
@@ -65,33 +66,41 @@ export function ProductEditorForm({
   const [features, setFeatures] = useState(product?.features.join('\n') ?? '')
   const [useCases, setUseCases] = useState(product?.useCases.join('\n') ?? '')
   const [error, setError] = useState('')
+  const [uploadingImage, setUploadingImage] = useState(false)
+  const [saving, setSaving] = useState(false)
 
-  function handleImageFile(event: ChangeEvent<HTMLInputElement>) {
+  async function handleImageFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
 
     if (!file) {
       return
     }
 
-    if (!file.type.startsWith('image/') || file.size > 2_500_000) {
-      setError('请选择不超过 2.5MB 的图片文件。')
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 8 * 1024 * 1024) {
+      setError('请选择 JPG、PNG 或 WebP 格式且不超过 8MB 的图片文件。')
       return
     }
 
-    const reader = new FileReader()
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        setImage(reader.result)
-        setError('')
-      }
+    setUploadingImage(true)
+    setError('')
+    try {
+      setImage(await uploadImage(file))
+    } catch {
+      setError('图片上传失败，请确认已登录后台后重试。')
+    } finally {
+      setUploadingImage(false)
     }
-    reader.readAsDataURL(file)
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     try {
+      if (uploadingImage) {
+        setError('图片正在上传，请稍候再保存产品。')
+        return
+      }
+
       const parsedSpecs = parseSpecifications(specifications)
 
       if (!image || parsedSpecs.length === 0) {
@@ -99,7 +108,13 @@ export function ProductEditorForm({
         return
       }
 
-      onSave({
+      if (image.startsWith('data:')) {
+        setError('请重新选择图片上传，不支持把图片直接写入产品资料。')
+        return
+      }
+
+      setSaving(true)
+      await onSave({
         id: product?.id ?? `product-${Date.now()}`,
         slug: product?.slug ?? slugify(`${sku}-${name}`),
         sku: sku.trim(),
@@ -120,8 +135,14 @@ export function ProductEditorForm({
         leadTime: leadTime.trim(),
         status,
       })
-    } catch {
-      setError('价格格式不正确，请最多保留两位小数。')
+    } catch (saveError) {
+      setError(
+        saveError instanceof Error
+          ? saveError.message
+          : '产品保存失败，请检查必填字段后重试。',
+      )
+    } finally {
+      setSaving(false)
     }
   }
 
@@ -183,9 +204,10 @@ export function ProductEditorForm({
         </label>
       </div>
       <label className="admin-field">
-        <span>上传产品图片（不超过 2.5MB）</span>
-        <input accept="image/*" onChange={handleImageFile} type="file" />
+        <span>上传产品图片（JPG / PNG / WebP，不超过 8MB）</span>
+        <input accept="image/jpeg,image/png,image/webp" disabled={uploadingImage || saving} onChange={handleImageFile} type="file" />
       </label>
+      {uploadingImage && <p className="admin-form__notice" role="status">图片上传中，请稍候。</p>}
       {image && <img className="product-editor__preview" src={image} alt="产品图片预览" />}
       <label className="admin-field">
         <span>产品简介</span>
@@ -209,8 +231,8 @@ export function ProductEditorForm({
       </label>
       {error && <p className="admin-form__error" role="alert">{error}</p>}
       <div className="admin-form__actions">
-        <IndustrialButton type="submit">保存产品</IndustrialButton>
-        <IndustrialButton onClick={onCancel} variant="outline">取消</IndustrialButton>
+        <IndustrialButton disabled={uploadingImage || saving} type="submit">{saving ? '保存中…' : '保存产品'}</IndustrialButton>
+        <IndustrialButton disabled={uploadingImage || saving} onClick={onCancel} variant="outline">取消</IndustrialButton>
       </div>
     </form>
   )

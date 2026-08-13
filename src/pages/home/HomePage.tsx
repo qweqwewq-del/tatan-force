@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
-import heroImage from '../../assets/figma/homepage-hero.png'
+import heroImage from '../../assets/brand/home-hero-tatan-plates.jpg'
+import manufacturingProcessImage from '../../assets/brand/manufacturing-process.jpg'
+import highStrengthMaterialsImage from '../../assets/brand/high-strength-materials.jpg'
+import commercialEquipmentImage from '../../assets/brand/commercial-equipment.jpg'
+import customSolutionsImage from '../../assets/brand/custom-solutions.jpg'
 import { SectionHeader } from '../../components/common/SectionHeader'
 import { ProductCard } from '../../components/product/ProductCard'
 import { ProductSceneSection } from '../../components/product/ProductSceneSection'
@@ -7,26 +11,22 @@ import { useDocumentMeta } from '../../app/useDocumentMeta'
 import { useProducts } from '../../features/catalog/useProducts'
 import { useSiteSettings } from '../../features/settings/useSiteSettings'
 
-const advantages = [
+const brandEvidenceImages = [
   {
-    code: '01',
-    title: '专业制造',
-    description: '从结构设计、焊接工艺到整机装配，建立稳定的商业级制造标准。',
+    image: manufacturingProcessImage,
+    alt: '健身器材专业制造车间',
   },
   {
-    code: '02',
-    title: '高强度材料',
-    description: '精选厚壁钢材、耐磨橡胶与高强度连接件，应对高频训练负荷。',
+    image: highStrengthMaterialsImage,
+    alt: '高强度训练设备结构细节',
   },
   {
-    code: '03',
-    title: '商业级设备',
-    description: '围绕健身房日常运营与安全要求，提供耐用、易维护的设备方案。',
+    image: commercialEquipmentImage,
+    alt: '商业级健身器材组合',
   },
   {
-    code: '04',
-    title: '定制解决方案',
-    description: '根据空间、预算与训练目标，完成设备组合和场地配置建议。',
+    image: customSolutionsImage,
+    alt: '健身空间定制方案示意',
   },
 ]
 
@@ -120,11 +120,9 @@ export function HomePage() {
             description="围绕强度、耐用性与场景适配，建立可长期使用的专业装备体系。"
           />
           <div className="advantage-grid" id="advantages-title">
-            {advantages.map((advantage) => (
-              <article key={advantage.code}>
-                <span>{advantage.code}</span>
-                <h3>{advantage.title}</h3>
-                <p>{advantage.description}</p>
+            {brandEvidenceImages.map((item) => (
+              <article className="brand-evidence-card" key={item.alt}>
+                <img alt={item.alt} loading="lazy" src={item.image} />
               </article>
             ))}
           </div>

@@ -22,5 +22,11 @@ describe('HomePage', () => {
       '/products',
     )
     expect(screen.getAllByRole('article')).toHaveLength(9)
+    expect(
+      screen.getByRole('img', { name: '健身器材专业制造车间' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: '健身空间定制方案示意' }),
+    ).toBeInTheDocument()
   })
 })

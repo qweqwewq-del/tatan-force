@@ -56,6 +56,15 @@ beforeEach(() => {
       upsertProduct(body)
       return json({ product: body }, 201)
     }
+    if (url.pathname === '/api/uploads' && method === 'POST') {
+      return json({
+        file: {
+          key: '2026-08/test-product-image.png',
+          url: '/uploads/2026-08/test-product-image.png',
+          checksum: 'test-checksum',
+        },
+      }, 201)
+    }
     if (url.pathname.startsWith('/api/products/') && method === 'PUT') {
       upsertProduct(body)
       return json({ product: body })

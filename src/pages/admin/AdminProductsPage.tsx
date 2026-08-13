@@ -11,6 +11,22 @@ import {
   removeProduct,
   saveProduct,
 } from '../../services/product-api'
+import { ApiError } from '../../services/api-client'
+
+function productRequestMessage(error: unknown) {
+  if (error instanceof ApiError) {
+    if (error.code === 'VALIDATION_ERROR') {
+      return '产品资料不符合要求：请检查名称、SKU、规格、价格与图片后重新保存。'
+    }
+    if (error.code === 'DUPLICATE_RECORD') {
+      return 'SKU 或产品链接已存在，请修改 SKU 后重试。'
+    }
+    if (error.code === 'UNAUTHENTICATED') {
+      return '登录状态已失效，请重新登录后台。'
+    }
+  }
+  return '产品保存失败，请检查网络后重试。'
+}
 
 export function AdminProductsPage() {
   const { products, setProducts } = useProducts(true)
@@ -92,8 +108,8 @@ export function AdminProductsPage() {
                           current.map((item) => item.id === saved.id ? saved : item),
                         )
                         setMessage(nextStatus === 'active' ? '产品已上架。' : '产品已下架。')
-                      } catch {
-                        setMessage('产品状态更新失败。')
+                      } catch (error) {
+                        setMessage(productRequestMessage(error))
                       }
                     }}
                     type="button"
@@ -113,8 +129,8 @@ export function AdminProductsPage() {
                               current.filter((item) => item.id !== product.id),
                             )
                             setMessage('产品已删除。')
-                          } catch {
-                            setMessage('产品删除失败。')
+                          } catch (error) {
+                            setMessage(productRequestMessage(error))
                           }
                         }
                       }}
@@ -149,8 +165,8 @@ export function AdminProductsPage() {
                 : [...current, saved])
               setMessage('产品资料已保存。')
               closeEditor()
-            } catch {
-              setMessage('产品保存失败，请检查字段或网络。')
+            } catch (error) {
+              throw new Error(productRequestMessage(error))
             }
           }}
         />

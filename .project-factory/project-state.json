@@ -1,0 +1,20 @@
+﻿{
+  "projectName": "TATAN FORCE website maintenance",
+  "projectType": "B2B product catalogue and inquiry system",
+  "projectLevel": "Level 2",
+  "targetPlatforms": ["web"],
+  "technologyStack": ["React", "TypeScript", "Vite", "Express", "PostgreSQL", "Docker"],
+  "enabledModules": ["catalogue", "inquiry", "admin", "uploads"],
+  "currentPhase": "release",
+  "approvedPhases": ["implementation-maintenance", "functional-qa", "security-audit"],
+  "pendingDecisions": ["Configure durable object storage or a Railway Volume for future administrator uploads."],
+  "blockedIssues": [],
+  "currentTask": "Publish homepage asset update and repaired product image upload workflow",
+  "nextSuggestedPhase": "deployment-verification",
+  "allowAutoContinue": false,
+  "visualScoreThreshold": 90,
+  "functionalTestsPassed": true,
+  "securityReviewPassed": true,
+  "deploymentStatus": "ready-to-push",
+  "lastUpdatedAt": "2026-08-13T09:30:00Z"
+}

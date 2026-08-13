@@ -12,6 +12,11 @@ export const specItemSchema = z.object({
   unit: z.string().max(40).optional(),
 })
 
+const productImageUrlSchema = z.string().max(2_000).refine(
+  (value) => /^\/(?!\/)/.test(value) || /^https?:\/\//i.test(value),
+  'Product images must use an uploaded path or an HTTP(S) URL.',
+)
+
 export const productSchema = z.object({
   id: z.string().min(3).max(120),
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(160),
@@ -21,7 +26,7 @@ export const productSchema = z.object({
   category: z.string().min(1).max(120),
   summary: z.string().min(1).max(500),
   description: z.string().min(1).max(10_000),
-  images: z.array(z.string().min(1).max(2_000)).max(20),
+  images: z.array(productImageUrlSchema).min(1).max(20),
   material: z.string().min(1).max(500),
   dimensions: z.string().min(1).max(500),
   weight: z.string().min(1).max(300),

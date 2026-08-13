@@ -84,6 +84,20 @@ const app = createApp({
   },
 })
 
+async function loginAdmin() {
+  const admin = request.agent(app)
+  await admin
+    .post('/api/auth/login')
+    .set('Origin', 'http://localhost')
+    .send({
+      username: 'tatan_admin',
+      password: 'ValidationAdmin!2026',
+      role: 'ADMIN',
+    })
+    .expect(200)
+  return admin
+}
+
 beforeAll(async () => {
   await db.query(
     "INSERT INTO users (id,username,password_hash,role) VALUES ($1,$2,$3,'ADMIN')",
@@ -160,5 +174,32 @@ describe('production API security boundary', () => {
         role: 'ADMIN',
       })
       .expect(403)
+  })
+
+  it('accepts signed image content from an authenticated administrator', async () => {
+    const admin = await loginAdmin()
+    const pngHeader = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
+    const upload = await admin
+      .post('/api/uploads')
+      .set('Origin', 'http://localhost')
+      .attach('file', Buffer.concat([pngHeader, Buffer.from('test-image')]), {
+        filename: 'equipment.png',
+        contentType: 'image/png',
+      })
+      .expect(201)
+
+    expect(upload.body.file.url).toBe('/uploads/test.png')
+  })
+
+  it('rejects an image upload whose binary signature is not an image', async () => {
+    const admin = await loginAdmin()
+    await admin
+      .post('/api/uploads')
+      .set('Origin', 'http://localhost')
+      .attach('file', Buffer.from('not-an-image'), {
+        filename: 'bad.png',
+        contentType: 'image/png',
+      })
+      .expect(400, { error: 'INVALID_IMAGE_FILE' })
   })
 })
