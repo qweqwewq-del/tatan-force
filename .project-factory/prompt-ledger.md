@@ -147,3 +147,23 @@ Pending.
 - Reusable lesson: Product images must be uploaded to durable server/object storage before saving the product record; browser `data:` URLs are unsuitable for production product records.
 - Failure reason: none.
 - Template candidate: yes.
+
+## Prompt PF-20260813-220500
+
+- Date/time and timezone: 2026-08-13T22:05:00+08:00
+- Phase: release-correction
+- Page/module: Homepage hero and brand evidence imagery
+
+### User original request
+
+首页主图放大的太多了，没有设计美感。四张宣传图保留原有文字。帮我修改完后重新部署
+
+### Actual actions
+
+- Changed desktop hero rendering from cropped cover mode to complete-image contain mode with a shorter, image-proportionate hero height.
+- Restored the four customer-supplied promotion images, including their original Chinese captions and framing.
+- Verified typecheck, lint, 39 tests, production build and production dependency audit.
+
+### Result
+
+Ready for Railway deployment through the GitHub push.
